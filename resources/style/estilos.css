@@ -1,0 +1,8 @@
+.padre {
+	-fx-background-color: lightblue;
+}
+
+.text-field, .button {
+	-fx-border-radius: 25px;
+	-fx-background-radius: 25px;
+}
