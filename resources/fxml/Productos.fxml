@@ -10,6 +10,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
@@ -68,15 +69,36 @@
                   <Insets right="10.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="tfCodigo" maxWidth="-Infinity" prefHeight="25.0" prefWidth="141.0" GridPane.columnIndex="1" />
-            <TextField fx:id="tfNombre" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="tfPrecio" maxWidth="-Infinity" prefWidth="141.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <CheckBox fx:id="cbDisponible" mnemonicParsing="false" text="Disponible" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="tfCodigo" maxWidth="-Infinity" prefHeight="25.0" prefWidth="141.0" GridPane.columnIndex="1">
+               <tooltip>
+                  <Tooltip text="Código para el producto" />
+               </tooltip></TextField>
+            <TextField fx:id="tfNombre" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <tooltip>
+                  <Tooltip text="Nombre del producto" />
+               </tooltip></TextField>
+            <TextField fx:id="tfPrecio" maxWidth="-Infinity" prefWidth="141.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <tooltip>
+                  <Tooltip text="Precio del producto" />
+               </tooltip></TextField>
+            <CheckBox fx:id="cbDisponible" mnemonicParsing="false" text="Disponible" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <tooltip>
+                  <Tooltip text="Disponibilidad del producto" />
+               </tooltip></CheckBox>
             <FlowPane alignment="CENTER" hgap="100.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <children>
-                  <Button fx:id="btnCrear" mnemonicParsing="false" onAction="#crear" text="Crear" />
-                  <Button fx:id="btnActualizar" mnemonicParsing="false" onAction="#actualizar" text="Actualizar" />
-                  <Button fx:id="btnLimpiar" mnemonicParsing="false" onAction="#limpiar" text="Limpiar" />
+                  <Button fx:id="btnCrear" mnemonicParsing="false" onAction="#crear" text="Crear">
+                     <tooltip>
+                        <Tooltip text="Crear nuevo producto" />
+                     </tooltip></Button>
+                  <Button fx:id="btnActualizar" mnemonicParsing="false" onAction="#actualizar" text="Actualizar">
+                     <tooltip>
+                        <Tooltip text="Actualizar producto existente" />
+                     </tooltip></Button>
+                  <Button fx:id="btnLimpiar" mnemonicParsing="false" onAction="#limpiar" text="Limpiar">
+                     <tooltip>
+                        <Tooltip text="Limpiar los campos" />
+                     </tooltip></Button>
                </children>
             </FlowPane>
          </children>
