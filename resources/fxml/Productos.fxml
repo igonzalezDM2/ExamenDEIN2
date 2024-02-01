@@ -10,13 +10,11 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <BorderPane styleClass="padre" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProductosController">
    <top>
@@ -25,8 +23,8 @@
           <Menu mnemonicParsing="false" text="Ayuda">
                <items>
                   <MenuItem fx:id="miInfo" mnemonicParsing="false" onAction="#acercade" text="Acerca de..." />
-                  <MenuItem fx:id="miWeb" mnemonicParsing="false" onAction="#web" text="Ayuda web" />
-                  <MenuItem fx:id="miHtml" mnemonicParsing="false" onAction="#ayudaHtml" text="Ayuda html" />
+                  <MenuItem fx:id="miHtml" mnemonicParsing="false" onAction="#ayudaHtml" text="Ayuda offline" />
+                  <MenuItem fx:id="miWeb" mnemonicParsing="false" onAction="#web" text="Ayuda online" />
                </items></Menu>
         </menus>
       </MenuBar>
@@ -44,11 +42,10 @@
             <RowConstraints maxHeight="194.0" minHeight="10.0" prefHeight="84.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="194.0" minHeight="10.0" prefHeight="84.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="194.0" minHeight="10.0" prefHeight="84.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="194.0" minHeight="10.0" prefHeight="84.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="418.0" minHeight="10.0" prefHeight="296.5463625415935" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TableView fx:id="tvProductos" prefHeight="282.0" prefWidth="593.0" GridPane.columnSpan="3" GridPane.rowIndex="6">
+            <TableView fx:id="tvProductos" prefHeight="282.0" prefWidth="593.0" GridPane.columnSpan="3" GridPane.rowIndex="5">
               <columns>
                 <TableColumn fx:id="tcCodigo" prefWidth="135.45505106449127" text="CÓDIGO" />
                 <TableColumn fx:id="tcNombre" prefWidth="208.18260192871094" text="NOMBRE" />
@@ -75,26 +72,11 @@
             <TextField fx:id="tfNombre" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="tfPrecio" maxWidth="-Infinity" prefWidth="141.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <CheckBox fx:id="cbDisponible" mnemonicParsing="false" text="Disponible" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <FlowPane alignment="CENTER" hgap="100.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+            <FlowPane alignment="CENTER" hgap="100.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <children>
                   <Button fx:id="btnCrear" mnemonicParsing="false" onAction="#crear" text="Crear" />
                   <Button fx:id="btnActualizar" mnemonicParsing="false" onAction="#actualizar" text="Actualizar" />
                   <Button fx:id="btnLimpiar" mnemonicParsing="false" onAction="#limpiar" text="Limpiar" />
-               </children>
-            </FlowPane>
-            <Label text="Imagen:" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
-               <padding>
-                  <Insets right="10.0" />
-               </padding>
-            </Label>
-            <FlowPane hgap="50.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <children>
-                  <Button fx:id="btnSubirImagen" mnemonicParsing="false" onAction="#subirImagen" text="Seleccionar imagen...">
-                     <graphic>
-                        <FontIcon iconLiteral="far-file-image" />
-                     </graphic>
-                  </Button>
-                  <ImageView fx:id="ivImagen" fitHeight="68.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </FlowPane>
          </children>

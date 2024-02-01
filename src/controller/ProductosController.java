@@ -22,7 +22,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -35,9 +34,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import model.Producto;
 import utilities.StringUtils;
 import utilities.Utilidades;
@@ -66,24 +63,12 @@ public class ProductosController implements Initializable {
      */
     @FXML
     private Button btnLimpiar;
-    
-    /**
-     * Botón para subir una imagen para el producto.
-     */
-    @FXML
-    private Button btnSubirImagen;
 
     /**
      * Checkbox para indicar si el producto está disponible.
      */
     @FXML
     private CheckBox cbDisponible;
-
-    /**
-     * Vista de imagen para mostrar la imagen del producto.
-     */
-    @FXML
-    private ImageView ivImagen;
     
     /**
      * Menú de información.
@@ -196,22 +181,6 @@ public class ProductosController implements Initializable {
     	limpiarFormulario();
     }
     
-    /**
-     * Método para subir una imagen para el producto.
-     * @param event Evento de acción.
-     */
-    @FXML
-    void subirImagen(ActionEvent event) {
-    	try {
-    		Window window = ((Node)event.getSource()).getScene().getWindow();
-    		this.imgSeleccionada = Utilidades.abrirFileChooserImagen(window);
-    		if (this.imgSeleccionada != null) {    			
-    			ivImagen.setImage(Utilidades.byte2Image(imgSeleccionada));
-    		}
-		} catch (ProductosException e) {
-			lanzarError(e);
-		}
-    }
     
     /**
      * Método para mostrar información sobre la aplicación.
@@ -316,16 +285,11 @@ public class ProductosController implements Initializable {
      * @param producto Producto a partir del cual se rellenará el formulario.
      */
     private void rellenarEditor(Producto producto) {
-    	try {
-    		tfCodigo.setText(producto.getCodigo());
-    		tfNombre.setText(producto.getNombre());
-    		tfPrecio.setText(num2str(producto.getPrecio()));
-    		cbDisponible.setSelected(producto.isDisponible());
-    		this.imgSeleccionada = producto.getImagen();
-			ivImagen.setImage(Utilidades.byte2Image(imgSeleccionada));
-		} catch (ProductosException e) {
-			lanzarError(e);
-		}
+    	tfCodigo.setText(producto.getCodigo());
+		tfNombre.setText(producto.getNombre());
+		tfPrecio.setText(num2str(producto.getPrecio()));
+		cbDisponible.setSelected(producto.isDisponible());
+		this.imgSeleccionada = producto.getImagen();
     }
     
     /**
@@ -337,7 +301,6 @@ public class ProductosController implements Initializable {
     	tfNombre.clear();
     	tfPrecio.clear();
     	cbDisponible.setSelected(false);
-    	ivImagen.setImage(null);
     	btnActualizar.setDisable(true);
     	btnCrear.setDisable(false);
     	tfCodigo.setDisable(false);
