@@ -12,10 +12,12 @@ import static utilities.Utilidades.num2str;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import dao.DAOProducto;
 import excepciones.ProductosException;
+import jasper.Creador;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
@@ -364,13 +366,15 @@ public class ProductosController implements Initializable {
         	
         });
         
-        MenuItem miVerImagen = new MenuItem("Ver Imagen");
+        MenuItem miCrearInforme = new MenuItem("Generar informe");
         MenuItem miEliminar = new MenuItem("Eliminar");
         
-        miVerImagen.setOnAction(e -> {
+        miCrearInforme.setOnAction(e -> {
         	Producto producto = tvProductos.getSelectionModel().getSelectedItem();
-        	if (producto != null && producto.getImagen() != null) {        		
-        		mostrarImagen(producto.getImagen(), 300, 300, "Imagen");
+        	if (producto != null && producto.getCodigo() != null) {
+        		HashMap<String, Object> params = new HashMap<>();
+        		params.put("codigoproducto", producto.getCodigo());
+        		Creador.crearInforme("informe.jasper", params);
         	}
         });
         
@@ -387,18 +391,18 @@ public class ProductosController implements Initializable {
         	}
         });
         
-        ContextMenu cm = new ContextMenu(miVerImagen, miEliminar);
+        ContextMenu cm = new ContextMenu(miCrearInforme, miEliminar);
         
         //HAGO VISIBLES LOS BOTONES SEGÚN DISPONIBILIDAD
         cm.setOnShowing(e -> {
         	Producto producto = tvProductos.getSelectionModel().getSelectedItem();
         	if (producto != null) {
         		miEliminar.setVisible(true);
-        		miVerImagen.setVisible(producto.getImagen() != null);
+        		miCrearInforme.setVisible(true);
         		
         	} else {
         		miEliminar.setVisible(false);
-        		miVerImagen.setVisible(false);
+        		miCrearInforme.setVisible(false);
         	}
         	
         });

@@ -26,9 +26,7 @@ public class VisorAyudaControllerHtml implements Initializable {
 		r1Item.getChildren().add(new TreeItem<Help>(new Help("Tema 1", "tema1.html")));
 		r1Item.getChildren().add(new TreeItem<Help>(new Help("Tema 2", "tema2.html")));
 		r1Item.getChildren().add(new TreeItem<Help>(new Help("Tema 3", "tema3.html")));
-		TreeItem<Help> r2Item = new TreeItem<Help>(new Help("Ayuda online", "http://www.google.es", false));
 		rItem.getChildren().add(r1Item);
-		rItem.getChildren().add(r2Item);
 		arbol.setRoot(rItem);
 		arbol.setShowRoot(false);
 		//Mostramos el contenido inicial en el visor de la derecha
